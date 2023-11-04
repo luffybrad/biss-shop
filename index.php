@@ -2,42 +2,57 @@
 <!--product display-->
 <div class="container p-0">
 <div class="row row-cols-1 row-cols-md-3 g-4">
+  <?php
+    $sql = "select * from products order by rand()";
+    $res = mysqli_query($conn,$sql);
+    while($row=mysqli_fetch_assoc($res)){
+      $id = $row["id"];
+      $name = $row["name"];
+      $desc = $row["description"];
+      $image1 = $row["image1"];
+      $image2 = $row["image2"];
+      $price = $row["price"];
+
+  ?>
   <div class="col">
-    <div class="card h-100">
-      <img src="https://imageio.forbes.com/specials-images/imageserve/5d3703e2f1176b00089761a6/2020-Chevrolet-Corvette-Stingray/0x0.jpg?format=jpg&crop=4560,2565,x836,y799,safe&width=1440" class="card-img-top img-fluid" alt="...">
+    <div class="card h-200">
+          <div id="carouselExampleControls" class="carousel slide " data-bs-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img src="images/<?php echo $image1?>" class="d-block w-100  card-img-top" alt="...">
+          </div>
+          <div class="carousel-item">
+            <img src="images/<?php echo $image2?>" class="d-block w-100  card-img-top" alt="...">
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
       <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+        <h5 class="card-title"><?php echo $name?></h5>
+        <p class="card-text"><?php echo $desc ?></p>
       </div>
       <div class="card-footer">
-        <small class="text-muted">Last updated 3 mins ago</small>
+        <small class="text-muted">
+          <div class="row">
+            <div class="col">
+                  $<span class="price"><?php echo $price?>
+                </span>
+            </div>
+          </div>
+        </small>
       </div>
     </div>
   </div>
-  <div class="col">
-    <div class="card h-100">
-      <img src="https://hips.hearstapps.com/hmg-prod/images/2024-lamborghini-revuelto-127-641a1d518802b.jpg?crop=1xw:1xh;center,top&resize=980:*" class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-      </div>
-      <div class="card-footer">
-        <small class="text-muted">Last updated 3 mins ago</small>
-      </div>
-    </div>
-  </div>
-  <div class="col">
-    <div class="card h-100">
-      <img src="https://images.unsplash.com/photo-1605559424843-9e4c228bf1c2?auto=format&fit=crop&q=80&w=1528&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-      </div>
-      <div class="card-footer">
-        <small class="text-muted">Last updated 3 mins ago</small>
-      </div>
-    </div>
-  </div>
+  <?php
+  }
+  ?>
 </div>
 </div>
 <?php include "footer.php"?>

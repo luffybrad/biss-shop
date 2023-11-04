@@ -1,3 +1,6 @@
+<?php
+  include "connect.php";
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -53,11 +56,35 @@
 <!--offcanvas nav-->
 <div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions" aria-labelledby="offcanvasWithBothOptionsLabel">
   <div class="offcanvas-header">
-    <h5 class="offcanvas-title" id="offcanvasWithBothOptionsLabel">Categories</h5>
+    <?php
+  $sql = "select * from categories";
+    $res = mysqli_query($conn,$sql);
+    $count = mysqli_num_rows($res);
+    ?>
+    <h5 class="offcanvas-title" id="offcanvasWithBothOptionsLabel">CATEGORIES</h5>
     <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
   </div>
   <div class="offcanvas-body">
-    <p>Try scrolling the rest of the page to see this option in action.</p>
+  <ul class="list-group list-group-flush">
+
+    <?php
+    if($res){
+      while ($row = mysqli_fetch_assoc($res)) {
+  
+          $name = $row["name"];
+          $id = $row["id"];
+      
+      ?>
+  <li class="list-group-item"><?php echo $name ?></li>
+<?php
+    }
+  }else{
+    
+  }
+    ?>
+    <br>
+    <?php echo $count?> Categories
+      </ul>
   </div>
 </div>
 <!--end-->

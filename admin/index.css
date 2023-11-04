@@ -1,0 +1,66 @@
+:root{
+    --color1: #3AAFA9;
+    --color2: #2B7A78;
+    --color3: #DEF2F1;
+    --color4: #17252A;
+}
+.body{
+    background-color: var(--color2);
+}
+
+/*navbar*/
+.navbar{
+    background-color: var(--color2) !important;
+}
+.navbar-brand, .nav-link{
+    color: var(--color3) !important;
+}
+.search-btn{
+    border-color: var(--color1);
+    color: var(--color3);
+}
+.search-btn:hover{
+    transform: scale(1.2);
+    color: var(--color3);
+    background-color: var(--color4);
+}
+/*index*/
+.header{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.card{
+    text-align: center;
+}
+.options{
+    text-decoration: none;
+    color: var(--color3);
+}
+.options :hover{
+    color: var(--color3);
+    text-decoration: none;
+    
+}
+.opt-btn:hover{
+    text-decoration: none;
+    color: var(--color3);
+}
+.nav-pills{
+    background-color: var(--color2) !important;
+    color: var(--color3) !important;
+}
+.nav-pills .nav-item .nav-link:active{
+    background-color: var(--color4);
+    color: var(--color3);
+}
+/*footer*/
+.footer-div{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--color2);
+}
+.copyright{
+    color: var(--color3);
+}
